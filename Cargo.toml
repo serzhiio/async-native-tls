@@ -15,20 +15,14 @@ categories = ["asynchronous", "cryptography", "network-programming"]
 
 
 [dependencies]
-native-tls = "0.2.3"
+native-tls = "0.2.4"
 thiserror = "1.0.9"
-futures-util = { version = "0.3.1", features = ["io"], optional = true }
-tokio = { version = "0.2.9", default-features = false, features = ["io-util"], optional = true }
+futures-util = { version = "0.3", features = ["io"], default-features=false }
 url = "2.1.1"
 
 [features]
-default = ["runtime-async-std"]
-
 vendored = ["native-tls/vendored"]
 
-# Runtime
-runtime-async-std = ["futures-util"]
-runtime-tokio = ["tokio"]
 
 [dev-dependencies]
 env_logger = "0.7.1"
@@ -39,16 +33,15 @@ futures = "0.3.1"
 
 [[test]]
 name = "google"
-required-features = [ "runtime-async-std" ]
+
 
 [[test]]
 name = "google-tokio"
-required-features = [ "runtime-tokio" ]
+
 
 [[test]]
 name = "bad"
-required-features = [ "runtime-async-std" ]
+
 
 [[test]]
 name = "smoke"
-required-features = [ "runtime-async-std" ]
